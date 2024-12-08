@@ -46,8 +46,11 @@ namespace WDTGG
                         nextRegion = splitRoomName[1];
                     }
 
+                    //Gets slugcat specific regions Example instead of SS: Five Pebbles it will be RW: The Rot for Rivulet
+                    string correctRegion = Region.GetProperRegionAcronym(self.SlugCatClass, nextRegion);
+
                     //Gets the full region name of the destination region
-                    string regionFullName = Region.GetRegionFullName(nextRegion, self.SlugCatClass);
+                    string regionFullName = Region.GetRegionFullName(correctRegion, self.SlugCatClass);
 
 
                     //Send message

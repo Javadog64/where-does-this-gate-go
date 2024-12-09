@@ -1,7 +1,7 @@
 {
   "id": "javadog.gateNames",
   "name": "Where Does This Gate Go?",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "authors": "Javadog",
   "description": "Adds a message that says where a region gate leads.",
   "requirements": [],

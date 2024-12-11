@@ -19,10 +19,13 @@ namespace WDTGG
         
         public static void Apply()
         {
+            // Here so that we can keep track of if 2 or more "Player"'s have entered a new room
+            int hasAnnounced = 0;
             On.Player.NewRoom += (orig, self, roomIN) =>
             {
-                orig(self, roomIN);
+                orig(self, roomIN);          
 
+               
                 //Gets current room name Example: GATE_SU_HI
                 string roomName = self.room.abstractRoom.name;
                 //Gets current region identifier Example: SU
@@ -36,6 +39,15 @@ namespace WDTGG
                 if (roomName.StartsWith("GATE"))
                 {
                     
+                    //Has a player already entered the gate?
+                    if (hasAnnounced >= 1)
+                    {
+                        return;
+                    }
+
+                    //Increment counter
+                    hasAnnounced++;
+
                     string nextRegion;
                     string[] splitRoomName = roomName.Split('_');
                     //Is the first element in the broken roomName is the region we're in
@@ -59,7 +71,11 @@ namespace WDTGG
                     string regionFullName = Region.GetRegionFullName(correctRegion, self.SlugCatClass);
 
                     //Send message
-                    self.room.game.cameras[0].hud.textPrompt.AddMessage("Gate to " + regionFullName, 0, 100, false, false);
+                    self.room.game.cameras[0].hud.textPrompt.AddMessage("Gate to " + regionFullName, 0, 100, false, true);
+                } else
+                {
+                    //PLayer has exited gate reset counter
+                    hasAnnounced = 0;
                 }
 
                 

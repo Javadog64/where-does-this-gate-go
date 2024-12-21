@@ -31,12 +31,9 @@ namespace WDTGG
                 //Gets current region identifier Example: SU
                 string region = self.room.world.name;
 
-                //Gets slugcat specific regions Example instead of SS: Five Pebbles it will be RW: The Rot for Rivulet
-                //Doesn't realy do anything if the slugcat isn't Rivulet or Saint
-                region = Region.GetProperRegionAcronym(self.SlugCatClass, region);
 
                 //Is the new room a gate?
-                if (roomName.StartsWith("GATE"))
+                if (self.room.IsGateRoom())
                 {
                     
                     //Has a player already entered the gate?
@@ -51,20 +48,20 @@ namespace WDTGG
                     string nextRegion;
                     string[] splitRoomName = roomName.Split('_');
                     //Is the first element in the broken roomName is the region we're in
-                    if (Region.GetProperRegionAcronym(self.SlugCatClass, splitRoomName[1]) == region)
-                    {
+                    if (splitRoomName[1] == region)
+                        {
                         //Set nextRegion to the desination region and get the correct acronym
-                        nextRegion = Region.GetProperRegionAcronym(self.SlugCatClass, splitRoomName[2]);
+                        nextRegion = splitRoomName[2];
                     }
                     //If the first element is not the region we're in
                     else
                     {
                         //Set nextRegion to the desination region and get the correct acronym
-                        nextRegion = Region.GetProperRegionAcronym(self.SlugCatClass, splitRoomName[1]);
+                        nextRegion = splitRoomName[1];
                     }
 
 
-                    //Gets slugcat specific regions Example instead of SS: Five Pebbles it will be RW: The Rot for Rivulet
+                    //Gets slugcat specific regions Example instead of SS: Five Pebbles it will be RM: The Rot for Rivulet
                     string correctRegion = Region.GetProperRegionAcronym(self.SlugCatClass, nextRegion);
 
                     //Gets the full region name of the destination region

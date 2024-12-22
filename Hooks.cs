@@ -29,7 +29,7 @@ namespace WDTGG
                 //Gets current room name Example: GATE_SU_HI
                 string roomName = self.room.abstractRoom.name;
                 //Gets current region identifier Example: SU
-                string region = self.room.world.name;
+                string region = Region.GetVanillaEquivalentRegionAcronym(self.room.world.name);
 
 
                 //Is the new room a gate?

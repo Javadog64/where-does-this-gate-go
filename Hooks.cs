@@ -45,7 +45,7 @@ namespace WDTGG
                     //Increment counter
                     hasAnnounced++;
 
-                    string nextRegion;
+                    string nextRegion = "";
                     string[] splitRoomName = roomName.Split('_');
                     //Is the first element in the broken roomName is the region we're in
                     if (splitRoomName[1] == region)

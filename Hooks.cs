@@ -11,6 +11,7 @@ using Steamworks;
 using System.Diagnostics;
 using UnityEngine;
 using System.IO;
+using RWCustom;
 
 namespace WDTGG
 {
@@ -68,7 +69,7 @@ namespace WDTGG
                     string regionFullName = Region.GetRegionFullName(correctRegion, self.SlugCatClass);
 
                     //Send message
-                    self.room.game.cameras[0].hud.textPrompt.AddMessage("Gate to " + regionFullName, 0, 100, false, true);
+                    self.room.game.cameras[0].hud.textPrompt.AddMessage(Custom.rainWorld.inGameTranslator.Translate("Gate to ") + Custom.rainWorld.inGameTranslator.Translate(regionFullName), 0, 100, false, true);
                 } else
                 {
                     //PLayer has exited gate reset counter

@@ -17,7 +17,7 @@ using IL;
 
 namespace WDTGG;
 
-[BepInPlugin("javadog.gateNames", "Where Does This Gate Go?", "1.0.5")]
+[BepInPlugin("javadog.gateNames", "Where Does This Gate Go?", "1.0.6")]
 public partial class WDTGG : BaseUnityPlugin
 {
     private void OnEnable()

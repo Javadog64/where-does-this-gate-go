@@ -67,13 +67,21 @@ namespace WDTGG
 
 
                 //Gets slugcat specific regions Example instead of SS: Five Pebbles it will be RM: The Rot for Rivulet
-                string correctRegion = Region.GetProperRegionAcronym(self.SlugCatClass, nextRegion);
+                string correctRegion = Region.GetProperRegionAcronym(self.room.game.TimelinePoint, nextRegion);
+
 
                 //Gets the full region name of the destination region
                 string regionFullName = Region.GetRegionFullName(correctRegion, self.SlugCatClass);
 
-                //Don't show if the region doesn't exist
-                if (Custom.rainWorld.inGameTranslator.Translate(regionFullName) == Custom.rainWorld.inGameTranslator.Translate("Unknown Region") || splitRoomName[0].ToUpper() != "GATE")
+                //Just in case a room is named something like GATE_HI
+                if(splitRoomName.Length < 3)
+                {
+                    return;
+                }
+
+                //Don't show the message if it isn't a gate(yeah i know its weird but its for stuff like in GHTS) or both parts are equal
+                //Example: Q0_TOFP returns false, DM_FAKEGATE_UNDER returns false, GATE_MK_MK returns false 
+                if (splitRoomName[0].ToUpper() != "GATE" || (splitRoomName.Length >= 3 && splitRoomName[1] == splitRoomName[2]))
                 {
                     return;
                 }

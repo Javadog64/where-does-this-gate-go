@@ -72,6 +72,12 @@ namespace WDTGG
                 //Gets the full region name of the destination region
                 string regionFullName = Region.GetRegionFullName(correctRegion, self.SlugCatClass);
 
+                //Don't show if the region doesn't exist
+                if (Custom.rainWorld.inGameTranslator.Translate(regionFullName) == Custom.rainWorld.inGameTranslator.Translate("Unknown Region") || splitRoomName[0].ToUpper() != "GATE")
+                {
+                    return;
+                }
+
                 //Send message
                 self.room.game.cameras[0].hud.textPrompt.AddMessage(Custom.rainWorld.inGameTranslator.Translate("Gate to ") + Custom.rainWorld.inGameTranslator.Translate(regionFullName), 0, 100, false, true);
             }

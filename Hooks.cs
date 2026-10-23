@@ -89,7 +89,7 @@ namespace WDTGG
                 string Translate(string msg) => Custom.rainWorld.inGameTranslator.Translate(msg);
 
                 //Send message
-                self.room.game.cameras[0].hud.textPrompt.AddMessage(Translate("Gate to ") + Translate(regionFullName) + ((Translate(regionFullName) == Translate("Unknown Region")) ? $" ({correctRegion})" : ""), 0, 100, false, true);
+                self.room.game.cameras[0]?.hud?.textPrompt?.AddMessage(Translate("Gate to ") + Translate(regionFullName) + ((Translate(regionFullName) == Translate("Unknown Region")) ? $" ({correctRegion})" : ""), 0, 100, false, true);
             }
             else
             {

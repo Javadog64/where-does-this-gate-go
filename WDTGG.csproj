@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <LangVersion>11</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -74,7 +75,7 @@
     </Reference>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;WDTGG\plugins&quot;"/>
+		<Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;WDTGG\plugins&quot;" />
 	</Target>
 	
 	
